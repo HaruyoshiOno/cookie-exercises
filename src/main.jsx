@@ -16,8 +16,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <Router>
       <Header />
       <Routes>
-        <Route path='/' element={<Shop />} />
-        <Route path='/cart' element={<Cart />} />
+        <Route path='cookie-exercises/' element={<Shop />} />
+        <Route path='cookie-exercises/cart' element={<Cart />} />
       </Routes>
     </Router>
   </React.StrictMode>

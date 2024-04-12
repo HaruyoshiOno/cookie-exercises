@@ -19,13 +19,13 @@ class Header extends React.Component {
             </div>
             <div className='button-area'>
                 <img src={TopButton} className='TopButton' alt='TopButton' />
-                <Link to='/'><img src={ShopButton} className='ShopButton' alt='ShopButton' /></Link>
+                <Link to='cookie-exercises/'><img src={ShopButton} className='ShopButton' alt='ShopButton' /></Link>
                 <img src={InfoButton} className='InfoButton' alt='InfoButton' />
                 <img src={NewsButton} className='NewsButton' alt='NewsButton' />
             </div>
                 <div className='icon-area'>
                 <img src={Account} className='Account' alt='Account' />
-                <Link to='/cart'><img src={Cart} className='Cart' alt='Cart' /></Link>
+                <Link to='cookie-exercises/cart'><img src={Cart} className='Cart' alt='Cart' /></Link>
             </div>
         </div>
       </div>
