@@ -1,55 +1,18 @@
-import React from 'react';
+import React  from 'react';
 import { Link } from 'react-router-dom'
 import {productData} from './items.jsx'
 
-let flg = false;
+let cartdataArray = [];
+let qtdataArray = [];
+let item_sum_price_string_Array = [];
+let cartflg = false;
 
 class Cart extends React.Component {
 
     componentDidMount() {
-        if(flg == false){
-        let listarea = document.getElementById('itemlist');
-        let list = '';
-        const cartdata = document.cookie.replace(/(?:(?:^|.*;\s*)id\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-        const selectedQtData = document.cookie.replace(/(?:(?:^|.*;\s*)qt\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-        if (cartdata.length > 0) {
-            const cartdataArray = cartdata.split(',');
-            const qtdataArray = selectedQtData.split(',');
-            console.log(cartdataArray);
-            console.log(qtdataArray);
-            cartdataArray.forEach ((index, i) => {
-                const item_sum_price = Number(productData[index].int) * Number(qtdataArray[i])
-                const item_sum_price_string = '￥' + item_sum_price.toLocaleString();
-                list +="\
-                <div class='cartitem'>\
-                    <div class='item'>\
-                        <img src=" + productData[index].image + " class='CartImage' alt='CartImage'></img>\
-                        <div class='item-param'>\
-                            <p class='brand'>" + productData[index].brand + "</p>\
-                            <p class='itemname'>" + productData[index].name + "</p>\
-                            <p class='price'>" + productData[index].price + " <span class='tax'>税込<span></p>\
-                        </div>\
-                    </div>\
-                    <div class='number'>\
-                        <div class='quantity'>\
-                            <p class='minus'>-</p>\
-                            <p class='select-qt'>" + qtdataArray[i] + "</p>\
-                            <p class='plus'>+</p>\
-                        </div>\
-                    </div>\
-                    <p class='item_sum'>" + item_sum_price_string  + "</p>\
-                </div>"
-            });
-            
-            listarea.insertAdjacentHTML('afterbegin',list);
-            getAllSumPrice();
-        } else {
-            let listarea = document.getElementById('itemlist');
-            listarea.insertAdjacentHTML('afterbegin', "<div class='nothing'>カートに商品がありません</div>");
-        }
-        flg = true;
-    } else {flg = false}
-    }
+        getAllSumPrice();
+        ZeroCart();
+      }
 
     render() {
       return (
@@ -62,7 +25,29 @@ class Cart extends React.Component {
                             <p className='sum'>合計</p>
                         </div>
                         <hr />
-                        <div id='itemlist' onClick={handleClick}>
+                        {getCookieArray()}
+                        <div id='itemlist' onClick={handleClick} onLoad={ZeroCart}>
+                            <div id='nothing' style={{display: 'none'}}> カートに商品がありません</div>
+                            {cartdataArray.map((id) => (
+                                <div className='cartitem'>
+                                <div className='item'>
+                                    <img src={productData[id].image} className='CartImage' alt='CartImage' />
+                                    <div className='item-param'>
+                                        <p className='brand'>{productData[id].brand}</p>
+                                        <p className='itemname'>{productData[id].name}</p>
+                                        <p className='price'>{productData[id].price}<span class='tax'>税込</span></p>
+                                    </div>
+                                </div>
+                                <div className='number'>
+                                    <div className='quantity'>
+                                        <p className='minus'>-</p>
+                                        <p className='select-qt'>{qtdataArray[id]}</p>
+                                        <p className='plus'>+</p>
+                                    </div>
+                                </div>
+                                <p className='item_sum'>{item_sum_price_string_Array[id]}</p>
+                            </div>
+                            ))}
                         </div>
                         <hr />
                     </div>
@@ -114,7 +99,7 @@ class Cart extends React.Component {
   };
 
   const getAllSumPrice = () => {
-    let all_sum_price = '';
+    let all_sum_price = '0';
 
     Array.from(document.getElementsByClassName('item_sum')).forEach((price) => {
         let int = parseInt(price.textContent.replace(/[￥,]/g, ''));
@@ -123,5 +108,35 @@ class Cart extends React.Component {
 
     document.getElementsByClassName('sum_price')[0].textContent = '￥'+ all_sum_price.toLocaleString();
   }
+
+  const getCookieArray = () => {
+    const cartdata = document.cookie.replace(/(?:(?:^|.*;\s*)id\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+    const selectedQtData = document.cookie.replace(/(?:(?:^|.*;\s*)qt\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+    if (cartdata.length > 0) {
+        cartdataArray = cartdata.split(',');
+        qtdataArray = selectedQtData.split(',');
+        console.log(cartdataArray);
+        console.log(qtdataArray);
+        cartflg = true;
+    }
+
+    {get_item_sum_price()}
+}
+
+const ZeroCart = () => {
+    if(cartflg == false) {
+        document.getElementById('nothing').style.display = 'block';
+    }
+}
+
+const get_item_sum_price = () => {
+    cartdataArray.forEach((id, i) => {
+        const item_sum_price = Number(productData[id].int) * Number(qtdataArray[i])
+        const item_sum_price_string = '￥' + item_sum_price.toLocaleString();
+        item_sum_price_string_Array.push(item_sum_price_string);
+    });    
+}
+
+
 
   export default Cart;
