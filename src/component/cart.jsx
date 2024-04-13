@@ -73,7 +73,7 @@ class Cart extends React.Component {
                             <div className='tax'>税込</div>
                         </div>
                         <div className='buy'>購入手続きへ</div>
-                        <Link to='/' className='link'><div className='goshop'>買い物を続ける</div></Link>
+                        <Link to='/cookie-exercises/' className='link'><div className='goshop'>買い物を続ける</div></Link>
                     </div>
                 </div>
       );

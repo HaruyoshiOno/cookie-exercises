@@ -1,3 +1,7 @@
+.select-qt, .plus, .minus, .CartButton {
+    display: grid;
+}
+
 .shop {
     width: 1280px;
     margin: auto;
@@ -59,6 +63,7 @@
         width: 200px;
         height: 50px;
         place-content: center;
+        place-items: center;
         font-size: 20px;
         font-weight: bold;
     }
