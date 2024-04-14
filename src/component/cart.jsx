@@ -33,7 +33,7 @@ class Cart extends React.Component {
                         {getCookieArray()}
                         <div id='itemlist' onClick={handleClick} onLoad={ZeroCart}>
                             <div id='nothing' style={{display: 'none'}}> カートに商品がありません</div>
-                            {cartdataArray.map((id) => (
+                            {cartdataArray.map((id, index) => (
                                 <div className='cartitem'>
                                 <div className='item'>
                                     <img src={images[id]} className='CartImage' alt='CartImage' />
@@ -46,11 +46,11 @@ class Cart extends React.Component {
                                 <div className='number'>
                                     <div className='quantity'>
                                         <p className='minus'>-</p>
-                                        <p className='select-qt'>{qtdataArray[id]}</p>
+                                        <p className='select-qt'>{qtdataArray[index]}</p>
                                         <p className='plus'>+</p>
                                     </div>
                                 </div>
-                                <p className='item_sum'>{item_sum_price_string_Array[id]}</p>
+                                <p className='item_sum'>{item_sum_price_string_Array[index]}</p>
                             </div>
                             ))}
                         </div>
