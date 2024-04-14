@@ -1,0 +1,12 @@
+
+header {
+    width: 100%;
+    padding: 20px 10px;
+    background-color: #ccc;
+
+    &-list {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+}

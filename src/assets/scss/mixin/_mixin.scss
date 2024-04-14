@@ -1,0 +1,32 @@
+@use "sass:map";
+
+
+@mixin sectionInner($maxWidth) {
+    width: 96%;
+    max-width: $maxWidth;
+    margin: 0 auto;
+}
+
+@mixin Btn($color) {
+    width: 300px;
+    padding: 30px 15px;
+    margin: 0 auto;
+    color: $color;
+}
+
+
+
+
+
+$breakpoint: (
+    sm: "screen and (max-width: 480px)",
+    md: "screen and (max-width: 768px)",
+    lg: "screen and (max-width: 960px)",
+    pc: "screen and (min-width: 960px)",
+);
+
+@mixin mq($bp) {
+    @media #{map.get($breakpoint, $bp)} {
+        @content;
+    }
+}

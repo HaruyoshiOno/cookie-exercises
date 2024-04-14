@@ -1,24 +1,18 @@
-import React from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { Header } from './compornent/Header';
+import { Btn } from './compornent/Btn';
 
-import Shop  from './component/shop.jsx'
-import Cart from './component/cart.jsx'
+import "./assets/scss/style.scss"
 
-import ReactDOM from 'react-dom/client'
-import Header from './component/header.jsx'
-import './scss/index.scss'
-import './scss/header.scss'
-import './scss/shop.scss'
-import './scss/cart.scss'
+const rootElement = document.getElementById('root');
+const root = createRoot(rootElement);
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <Router>
-      <Header />
-      <Routes>
-        <Route path='cookie-exercises/' element={<Shop />} />
-        <Route path='cookie-exercises/cart' element={<Cart />} />
-      </Routes>
-    </Router>
-  </React.StrictMode>
+root.render(
+  <StrictMode>
+    <Header />
+    <Btn />
+  </StrictMode>
 );
+
+
