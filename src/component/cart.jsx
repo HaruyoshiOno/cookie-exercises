@@ -28,7 +28,7 @@ class Cart extends React.Component {
                         {getCookieArray()}
                         <div id='itemlist' onClick={handleClick} onLoad={ZeroCart}>
                             <div id='nothing' style={{display: 'none'}}> カートに商品がありません</div>
-                            {cartdataArray.map((id) => (
+                            {cartdataArray.map((id, index) => (
                                 <div className='cartitem'>
                                 <div className='item'>
                                     <img src={productData[id].image} className='CartImage' alt='CartImage' />
@@ -41,7 +41,7 @@ class Cart extends React.Component {
                                 <div className='number'>
                                     <div className='quantity'>
                                         <p className='minus'>-</p>
-                                        <p className='select-qt'>{qtdataArray[id]}</p>
+                                        <p className='select-qt'>{qtdataArray[index]}</p>
                                         <p className='plus'>+</p>
                                     </div>
                                 </div>
