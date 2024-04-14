@@ -1,5 +1,10 @@
 import React from 'react';
 import {productData} from './items.jsx'
+import EZB from './assets/item/ezb.png';
+import MYPRO from './assets/item/mypro.png';
+import SAVAS from './assets/item/savas.png';
+
+const images = [EZB,MYPRO,SAVAS];
 
 class Shop extends React.Component {
     render() {
@@ -9,7 +14,7 @@ class Shop extends React.Component {
           <div className='item_area'>
             {productData.map((product, index) => (
               <div className='item' key={index}>
-                <img src={product.image} className='ItemImage' alt='ItemImage' />
+                <img src={images[index]} className='ItemImage' alt='ItemImage' />
                 <div className='textarea'>
                   <p className='brandname'>{product.brand}</p>
                   <h1 className='itemtitle'>{product.name}</h1>

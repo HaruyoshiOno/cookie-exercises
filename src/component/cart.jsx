@@ -1,6 +1,11 @@
 import React  from 'react';
 import { Link } from 'react-router-dom'
 import {productData} from './items.jsx'
+import EZB from './assets/item/ezb.png';
+import MYPRO from './assets/item/mypro.png';
+import SAVAS from './assets/item/savas.png';
+
+const images = [EZB,MYPRO,SAVAS];
 
 let cartdataArray = [];
 let qtdataArray = [];
@@ -31,7 +36,7 @@ class Cart extends React.Component {
                             {cartdataArray.map((id) => (
                                 <div className='cartitem'>
                                 <div className='item'>
-                                    <img src={productData[id].image} className='CartImage' alt='CartImage' />
+                                    <img src={images[id]} className='CartImage' alt='CartImage' />
                                     <div className='item-param'>
                                         <p className='brand'>{productData[id].brand}</p>
                                         <p className='itemname'>{productData[id].name}</p>
