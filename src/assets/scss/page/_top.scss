@@ -1,0 +1,7 @@
+@use "mixin";
+
+.itembox {
+    &-inner {
+        @include sectionInner(900px);
+    }
+}
