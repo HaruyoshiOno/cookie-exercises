@@ -28,10 +28,11 @@ export const ItemBox = () => {
           },
     ];
 
-    const quantity = document.querySelectorAll('itembox-decrease');
-    const increase = document.querySelectorAll('itembox-increase');
+    // const quantity = document.querySelectorAll('itembox-decrease');
+    // const increase = document.querySelectorAll('itembox-number');
+    // const increase = document.querySelectorAll('itembox-increase');
 
-    quantity
+    
 
 
     return(
@@ -49,7 +50,7 @@ export const ItemBox = () => {
                                     <div className="itembox-container">
                                         <div className="itembox-quantity">
                                             <p className="itembox-decrease">-</p>
-                                            <p className="itembox-number">{i}</p>
+                                            <p className="itembox-number"></p>
                                             <p className="itembox-increase">+</p>
                                         </div>
                                         <Btn />
