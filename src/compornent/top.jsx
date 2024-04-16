@@ -1,8 +1,10 @@
+import { Btn } from "./Btn";
+
 export const ItemBox = () => {
     const items = [
         {
             id: 1,
-            src: './path/to/image1.jpg',
+            src: './src/assets/images/item/ezb.png',
             maker: 'EZOBOLIC',
             name: 'エゾボリック 宇治抹茶 3kg',
             alt: 'エゾボリック 宇治抹茶 3kg',
@@ -10,7 +12,7 @@ export const ItemBox = () => {
           },
           {
             id: 2,
-            src: './path/to/image2.jpg',
+            src: './src/assets/images/item/mypro.png',
             maker: 'MYPROTAIN',
             name: 'マイプロテイン チョコレート 2.5kg',
             alt: 'マイプロテイン チョコレート 2.5kg',
@@ -18,13 +20,18 @@ export const ItemBox = () => {
           },
           {
             id: 3,
-            src: './path/to/image2.jpg',
+            src: './src/assets/images/item/savas.png',
             maker: 'SAVAS',
             name: 'ザバス グレープフルーツ 1.8kg',
             alt: 'ザバス グレープフルーツ 1.8kg',
             price: 3980,
           },
     ];
+
+    const quantity = document.querySelectorAll('itembox-decrease');
+    const increase = document.querySelectorAll('itembox-increase');
+
+    quantity
 
 
     return(
@@ -35,10 +42,18 @@ export const ItemBox = () => {
                         {items.map((item, index) => {
                             return(
                                 <li key={index}>
-                                    {console.log("item.id", item.id)}
                                     <img src={item.src} alt={item.alt} />
-                                    {console.log("item.src", item.src)}
-                                    <p>￥{item.price}税込</p>
+                                    <p className="itembox-maker">{item.maker}</p>
+                                    <p className="itembox-name">{item.name}</p>
+                                    <p className="itembox-price">￥{item.price}<span>税込</span></p>
+                                    <div className="itembox-container">
+                                        <div className="itembox-quantity">
+                                            <p className="itembox-decrease">-</p>
+                                            <p className="itembox-number">{i}</p>
+                                            <p className="itembox-increase">+</p>
+                                        </div>
+                                        <Btn />
+                                    </div>
                                 </li>
                             );
                             })}

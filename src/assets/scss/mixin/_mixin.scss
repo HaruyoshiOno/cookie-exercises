@@ -7,11 +7,13 @@
     margin: 0 auto;
 }
 
-@mixin Btn($color) {
-    width: 300px;
-    padding: 30px 15px;
+@mixin Btn($Width) {
+    width: $Width;
+    padding: 20px 10px;
     margin: 0 auto;
-    color: $color;
+    color: #fff;
+    background-color: #000;
+    text-align: center;
 }
 
 

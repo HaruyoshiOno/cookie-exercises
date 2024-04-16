@@ -1,7 +1,27 @@
-@use "mixin";
+@use "../mixin/index" as m;
 
 .itembox {
     &-inner {
-        @include sectionInner(900px);
+        @include m.sectionInner(900px);
     }
+
+    &-list {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 20px;
+    }
+
+    &-maker {
+        padding-top: 10px;
+        font-size: 12px;
+    }
+
+    &-name {
+        padding-top: 20px;
+        font-size: 16px;
+    }
+}
+
+.btn {
+    @include m.Btn(160px);
 }
