@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Btn } from "./Btn";
 
 export const ItemBox = () => {
@@ -28,10 +29,15 @@ export const ItemBox = () => {
           },
     ];
 
-    // const quantity = document.querySelectorAll('itembox-decrease');
-    // const increase = document.querySelectorAll('itembox-number');
-    // const increase = document.querySelectorAll('itembox-increase');
+    const [count, setCount] = useState(0);
 
+    const decrease = () => {
+        setCount(count - 1);
+      };
+
+    const increase = () => {
+        setCount(count + 1);
+      };
     
 
 
@@ -49,9 +55,9 @@ export const ItemBox = () => {
                                     <p className="itembox-price">￥{item.price}<span>税込</span></p>
                                     <div className="itembox-container">
                                         <div className="itembox-quantity">
-                                            <p className="itembox-decrease">-</p>
-                                            <p className="itembox-number"></p>
-                                            <p className="itembox-increase">+</p>
+                                            <button onClick={decrease} className="itembox-decrease">-</button>
+                                            <p className="itembox-number">{count}</p>
+                                            <button onClick={increase} className="itembox-increase">+</button>
                                         </div>
                                         <Btn />
                                     </div>
