@@ -2,14 +2,22 @@
 
 
 .itembox {
+    padding: 60px;
+
+    &-title {
+        font-size: 50px;
+        font-weight: bold;
+    }
+
     &-inner {
-        @include m.sectionInner(900px);
+        @include m.sectionInner(1100px);
     }
 
     &-list {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         column-gap: 20px;
+        padding-top: 40px;
     }
 
     &-maker {
@@ -19,21 +27,48 @@
 
     &-name {
         padding-top: 20px;
-        font-size: 16px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    &-price {
+        padding-top: 10px;
+        font-size: 22px;
+        span {
+            padding-left: 10px;
+            font-size: 10px;
+        }
     }
 
     &-container {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
+        padding-top: 20px;
     }
 
     &-quantity {
         display: flex;
-        padding: 15px 10px;
+        justify-content: space-between;
+        align-items: center;
+        border: 1px solid #000;
     }
 
     &-decrease {
-        
+        width: 30px;
+        height: 100%;
+        text-align: center;
+        color: #fff;
+        background-color: #000;
+    }
+
+    &-number {
+        width: 40px;
+        padding: 0 10px;
+        text-align: center
+    }
+
+    &-increase {
+       @extend .itembox-decrease;
     }
 }
 

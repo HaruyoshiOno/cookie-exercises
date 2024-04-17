@@ -8,7 +8,7 @@ export const ItemBox = () => {
             maker: 'EZOBOLIC',
             name: 'エゾボリック 宇治抹茶 3kg',
             alt: 'エゾボリック 宇治抹茶 3kg',
-            price: 8960,
+            price: 8 + ',' + 960,
           },
           {
             id: 2,
@@ -16,7 +16,7 @@ export const ItemBox = () => {
             maker: 'MYPROTAIN',
             name: 'マイプロテイン チョコレート 2.5kg',
             alt: 'マイプロテイン チョコレート 2.5kg',
-            price: 6600,
+            price: 6 + ',' + 600,
           },
           {
             id: 3,
@@ -24,7 +24,7 @@ export const ItemBox = () => {
             maker: 'SAVAS',
             name: 'ザバス グレープフルーツ 1.8kg',
             alt: 'ザバス グレープフルーツ 1.8kg',
-            price: 3980,
+            price: 3 + ',' + 980,
           },
     ];
 
@@ -35,6 +35,7 @@ export const ItemBox = () => {
         <>
             <section className="itembox">
                 <div className="itembox-inner">
+                    <h2 className="itembox-title">ONLINE STORE</h2>
                     <ul className="itembox-list">
                         {items.map((item) => (
                             <ItemList item={item} key={item.id} />
