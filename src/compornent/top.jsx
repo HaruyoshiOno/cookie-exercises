@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Btn } from "./Btn";
+import { ItemList } from "./ItemList";
 
 export const ItemBox = () => {
     const items = [
@@ -29,16 +29,21 @@ export const ItemBox = () => {
           },
     ];
 
-    const [count, setCount] = useState(0);
+    const [count, setCounters] = useState(0);
 
-    const decrease = () => {
-        setCount(count - 1);
-      };
-
-    const increase = () => {
-        setCount(count + 1);
+    const decrease = (id) => {
+        setCounters(prevCounters => ({
+          ...prevCounters,
+          [id]: prevCounters[id] - 1
+        }));
       };
     
+      const increase = (id) => {
+        setCounters(prevCounters => ({
+          ...prevCounters,
+          [id]: prevCounters[id] + 1
+        }));
+      };
 
 
     return(
@@ -46,24 +51,7 @@ export const ItemBox = () => {
             <section className="itembox">
                 <div className="itembox-inner">
                     <ul className="itembox-list">
-                        {items.map((item, index) => {
-                            return(
-                                <li key={index}>
-                                    <img src={item.src} alt={item.alt} />
-                                    <p className="itembox-maker">{item.maker}</p>
-                                    <p className="itembox-name">{item.name}</p>
-                                    <p className="itembox-price">￥{item.price}<span>税込</span></p>
-                                    <div className="itembox-container">
-                                        <div className="itembox-quantity">
-                                            <button onClick={decrease} className="itembox-decrease">-</button>
-                                            <p className="itembox-number">{count}</p>
-                                            <button onClick={increase} className="itembox-increase">+</button>
-                                        </div>
-                                        <Btn />
-                                    </div>
-                                </li>
-                            );
-                            })}
+                        <ItemList />
                     </ul>
                 </div>
             </section>
