@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { ItemList } from "./ItemList";
 
 export const ItemBox = () => {
@@ -29,21 +28,7 @@ export const ItemBox = () => {
           },
     ];
 
-    const [count, setCounters] = useState(0);
 
-    const decrease = (id) => {
-        setCounters(prevCounters => ({
-          ...prevCounters,
-          [id]: prevCounters[id] - 1
-        }));
-      };
-    
-      const increase = (id) => {
-        setCounters(prevCounters => ({
-          ...prevCounters,
-          [id]: prevCounters[id] + 1
-        }));
-      };
 
 
     return(
@@ -51,7 +36,9 @@ export const ItemBox = () => {
             <section className="itembox">
                 <div className="itembox-inner">
                     <ul className="itembox-list">
-                        <ItemList />
+                        {items.map((item) => (
+                            <ItemList item={item} key={item.id} />
+                        ))}
                     </ul>
                 </div>
             </section>
