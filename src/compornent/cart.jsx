@@ -1,4 +1,8 @@
+import React from 'react';
+
 export const Cart = () => {
+
+    
     return (
         <>
             <section className="cart">
@@ -22,3 +26,5 @@ export const Cart = () => {
         </>
     );
 };
+
+export default Cart;

@@ -1,3 +1,4 @@
+import React from "react";
 import { Btn } from "./Btn";
 import { useState } from "react";
 

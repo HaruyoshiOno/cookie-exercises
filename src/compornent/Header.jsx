@@ -1,3 +1,7 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+
 export const Header = () => {
 
     const navList = [
@@ -30,10 +34,12 @@ export const Header = () => {
                     ))}
                 </ul>
             </nav>
-            <ul className="header-box">
-                <li className="header-icon"><img src="./src/assets/images/account.png" alt="" /></li>
-                <li className="header-icon"><img src="./src/assets/images/cart.png" alt="" /></li>
-            </ul>
+            
+                <ul className="header-box">
+                    <li className="header-icon"><img src="./src/assets/images/account.png" alt="" /></li>
+                    <li className="header-icon"><Link to="/Cart"><img src="./src/assets/images/cart.png" alt="" /></Link></li>
+                </ul>
+
         </header>
            
         </>
