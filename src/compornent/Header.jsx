@@ -37,7 +37,7 @@ export const Header = () => {
             
                 <ul className="header-box">
                     <li className="header-icon"><img src="./src/assets/images/account.png" alt="" /></li>
-                    <li className="header-icon"><Link to="./Cart"><img src="./src/assets/images/cart.png" alt="" /></Link></li>
+                    <li className="header-icon"><Link to="/cookie-exercises/Cart"><img src="./src/assets/images/cart.png" alt="" /></Link></li>
                 </ul>
 
         </header>
