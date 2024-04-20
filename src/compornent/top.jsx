@@ -1,8 +1,6 @@
 import React from "react";
-import { Routes, Route } from 'react-router-dom';
 import { ItemList } from "./ItemList";
-import { Header } from "./Header";
-import Cart from './Cart';
+
 
 export const ItemBox = () => {
     const items = [
@@ -37,10 +35,6 @@ export const ItemBox = () => {
 
     return(
         <>
-        <Header />
-        <Routes>
-                    <Route path="/Cart" element={<Cart />} />
-                </Routes>
             <section className="itembox">
                 <div className="itembox-inner">
                     <h2 className="itembox-title">ONLINE STORE</h2>

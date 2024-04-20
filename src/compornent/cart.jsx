@@ -1,12 +1,10 @@
 import React from 'react';
-import { Header } from "./Header";
 
 export const Cart = () => {
 
     
     return (
         <>
-        <Header />
             <section className="cart">
                 <div className="cart-inner">
                     <h2 className="cart-title">Cart</h2>
