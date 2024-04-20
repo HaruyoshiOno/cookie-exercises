@@ -4,7 +4,7 @@ import { createRoot } from 'react-dom/client';
 
 import "./assets/scss/style.scss"
 import { ItemBox } from './compornent/top';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 
 
 
@@ -13,9 +13,9 @@ const root = createRoot(rootElement);
 
 root.render(
   <StrictMode>
-    <BrowserRouter>
+    <HashRouter>
     <ItemBox />
-    </BrowserRouter>
+    </HashRouter>
   </StrictMode>
 );
 
