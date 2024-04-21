@@ -5,8 +5,7 @@
     padding: 60px;
 
     &-title {
-        font-size: 50px;
-        font-weight: bold;
+        @include m.Title()
     }
 
     &-inner {

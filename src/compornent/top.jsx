@@ -49,4 +49,4 @@ export const ItemBox = () => {
     );
 };
 
-export default ItemBox;
+export default items;

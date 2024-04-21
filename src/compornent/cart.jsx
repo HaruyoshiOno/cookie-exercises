@@ -1,4 +1,8 @@
 import React from 'react';
+//import { ItemBox } from './top';
+import {items} from './top';
+
+
 
 export const Cart = () => {
 
@@ -16,7 +20,10 @@ export const Cart = () => {
                     <div className="cart-container">
                         <div className="cart-order">
                             <div className="cart-name">
-                                
+                                <img src={items[0].src} alt="" />
+                                <div className="cart-flavor">
+                                    
+                                </div>
                             </div>
                         </div>
                         <div className="cart-side"></div>

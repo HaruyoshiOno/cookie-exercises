@@ -7,6 +7,11 @@
     margin: 0 auto;
 }
 
+@mixin Title() {
+    font-size: 50px;
+    font-weight: bold;
+}
+
 @mixin Btn($Width) {
     width: $Width;
     padding: 10px;

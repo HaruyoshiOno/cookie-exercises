@@ -1,0 +1,28 @@
+@use "../mixin/index" as m;
+
+.cart {
+    &-inner {
+        @include m.sectionInner(1100px);
+    }
+
+    &-title {
+        @include m.Title();
+    }
+
+    &-category {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        padding: 40px 0 20px 0;
+        border-bottom: 1px solid #000;
+    }
+
+    &-type {
+        font-weight: bold;
+    }
+
+    &-container {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+    }
+
+}
