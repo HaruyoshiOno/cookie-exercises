@@ -14,8 +14,7 @@ prices.forEach((price) => {
 });
 console.log('total',total);
 console.log("合計金額:", total.toFixed(2)); // コンソールに合計金額を出力
-
-// totalPrice.textContent = total.toFixed(2);
+// totalPrice.textContent = total;
 
 
 export const Cart = () => {
