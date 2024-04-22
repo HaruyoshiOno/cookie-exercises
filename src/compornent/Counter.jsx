@@ -6,7 +6,11 @@ export const Counter = () => {
         const [count, setCount] = useState(0);
 
         const decrease = () => {
-            setCount(prevCount => prevCount - 1);
+            if (count <= 0) {
+                setCount(prevCount => prevCount = 0);
+            } else {
+                setCount(prevCount => prevCount - 1);
+            }
         };
     
         const increase = () => {
