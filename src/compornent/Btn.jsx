@@ -1,7 +1,7 @@
-export const Btn = () => {
+export const Btn = (backgroundColor) => {
     return (
         <>
-            <p className="btn">
+            <p className="btn" style={backgroundColor}>
                 <a href="">カートに追加</a>
             </p>
         </>
