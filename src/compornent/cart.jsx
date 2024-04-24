@@ -9,21 +9,24 @@ import { Btn } from './Btn';
 
 export const Cart = () => {
     
-
-    const prices = document.querySelectorAll('.cart-total');
-    console.log('prices', prices);
-    const totalPrice = document.querySelector('.cart-money');
+    let flg = false;
     let total = 0
 
     const AllPrice = () => {
-        prices.forEach((price) => {
-            console.log('price', price);
-            total += parseFloat(price.textContent.replace(/\D/g, ''));
-        });
-        console.log('total', total);
-        console.log("合計金額:", total.toFixed(2)); // コンソールに合計金額を出力
-        // totalPrice.textContent = total;
-    };
+    if(!flg){
+            const prices = document.querySelectorAll('.cart-total');
+            console.log('prices', prices);
+            const totalPrice = document.querySelector('.cart-money');
+            prices.forEach((price) => {
+                console.log('price', price);
+                total += parseFloat(price.textContent.replace(/\D/g, ''));
+            });
+            console.log('total', total);
+            console.log("合計金額:", total.toFixed(2)); // コンソールに合計金額を出力
+            totalPrice.textContent = total;
+            flg = true;
+        };
+    }
 
     useEffect (() => {
         AllPrice()

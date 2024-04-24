@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 
-export const Counter = () => {
+export const Counter = ({item}) => {
         // 商品個数をカウントする
         const [count, setCount] = useState(0);
 
@@ -17,33 +17,45 @@ export const Counter = () => {
             setCount(prevCount => prevCount + 1);
         };
 
-    //         // 商品個数
-    // const quantity = count;
 
-    // // 商品情報と個数をオブジェクトにまとめる
-    // const cartItem = {
-    //     item: item,
-    //     quantity: quantity
-    // };
+        const cookieSave = () => {
+                // 商品個数
+                const quantity = count;
 
-    // // カート情報をCookieに保存する
-    // document.cookie = "cartItem=" + JSON.stringify(cartItem);
+                // 商品情報と個数をオブジェクトにまとめる
+                const cartItem = {
+                    item: item,
+                    quantity: quantity
+                };
 
-    // // Cookieからカート情報を取得する
-    // const getCartItemFromCookie = () => {
-    //     const cookies = document.cookie.split(';');
-    //     for (let i = 0; i < cookies.length; i++) {
-    //         const cookie = cookies[i].trim();
-    //         if (cookie.indexOf("cartItem=") == 0) {
-    //             return JSON.parse(cookie.substring("cartItem=".length, cookie.length));
-    //         }
-    //     }
-    //     return null;
-    // }
+                // カート情報をCookieに保存する
+                document.cookie = "cartItem=" + JSON.stringify(cartItem);
+                console.log('cartItem',cartItem);
 
-    // // カート情報を取得してコンソールに出力
-    // const savedCartItem = getCartItemFromCookie();
-    // console.log(savedCartItem);
+                // Cookieからカート情報を取得する
+                const getCartItemFromCookie = () => {
+                    const cookies = document.cookie.split(';');
+                    for (let i = 0; i < cookies.length; i++) {
+                        const cookie = cookies[i].trim();
+                        if (cookie.indexOf("cartItem=") == 0) {
+                            return JSON.parse(cookie.substring("cartItem=".length, cookie.length));
+                        }
+                    }
+                    return null;
+                }
+
+    // カート情報を取得してコンソールに出力
+    const savedCartItem = getCartItemFromCookie();
+    console.log(savedCartItem);
+        }
+
+        useEffect(() => {
+            cookieSave();
+        },[count]);
+
+
+
+            
 
 
         return (
