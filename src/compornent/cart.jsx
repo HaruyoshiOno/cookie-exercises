@@ -1,23 +1,33 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { items } from './Items';
 import { Counter } from './Counter';
 import { Btn } from './Btn';
 
-const prices = document.querySelectorAll('.cart-total');
-console.log('prices',prices);
-// const totalPrice = document.querySelector('.cart-total');
-let total = 0
 
-prices.forEach((price) => {
-    console.log('price',price);
-    total += parseFloat(price.textContent.replace(/\D/g, ''));
-});
-console.log('total',total);
-console.log("合計金額:", total.toFixed(2)); // コンソールに合計金額を出力
-// totalPrice.textContent = total;
+
 
 
 export const Cart = () => {
+    
+
+    const prices = document.querySelectorAll('.cart-total');
+    console.log('prices', prices);
+    const totalPrice = document.querySelector('.cart-money');
+    let total = 0
+
+    const AllPrice = () => {
+        prices.forEach((price) => {
+            console.log('price', price);
+            total += parseFloat(price.textContent.replace(/\D/g, ''));
+        });
+        console.log('total', total);
+        console.log("合計金額:", total.toFixed(2)); // コンソールに合計金額を出力
+        // totalPrice.textContent = total;
+    };
+
+    useEffect (() => {
+        AllPrice()
+    },[]);
 
 return (
 <>
@@ -61,5 +71,8 @@ return (
 </>
 );
 };
+
+
+
 
 export default Cart;
