@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
+import { items } from './Items';
 
 export const Counter = ({item}) => {
         // 商品個数をカウントする
@@ -23,8 +24,9 @@ export const Counter = ({item}) => {
                 const quantity = count;
 
                 // 商品情報と個数をオブジェクトにまとめる
+                
                 const cartItem = {
-                    item: item,
+                    item: items,
                     quantity: quantity
                 };
 
