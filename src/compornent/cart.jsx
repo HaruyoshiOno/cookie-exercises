@@ -1,14 +1,31 @@
 import React, { useEffect } from 'react';
 import { items } from './Items';
-import { Counter } from './Counter';
-import { Btn } from './Btn';
+// import { Counter } from './Counter';
+// import { Btn } from './Btn';
 
 
 
 
 
 export const Cart = () => {
-    
+        // Cookieからカート情報を取得する
+        const getCartItemFromCookie = () => {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.indexOf("cartItem=") == 0) {
+                    return JSON.parse(cookie.substring("cartItem=".length, cookie.length));
+                }
+            }
+            return null;
+        }
+
+        // カート情報を取得してコンソールに出力
+        const savedCartItem = getCartItemFromCookie();
+        console.log(savedCartItem);
+        
+
+    // 合計金額
     let flg = false;
     let total = 0
 
@@ -55,7 +72,7 @@ return (
                                 <p className="cart-price">{item.price}<span>税込</span></p>
                             </div>
                         </div>
-                        <Counter />
+                        {/* <Counter /> */}
                         <p className="cart-total">{item.price}<span>税込</span></p>
                     </div>
                     ))}
@@ -65,7 +82,7 @@ return (
                         <p className="cart-sum">合計</p>
                         <p className="cart-money">{total}<span>税込</span></p>
                     </div>
-                    <Btn />
+                    {/* <Btn /> */}
                     {/* <Btn backgroundColor="#fff"/> */}
                 </div>
             </div>
