@@ -66,7 +66,7 @@ return (
                         <p className="cart-money">{total}<span>税込</span></p>
                     </div>
                     <Btn />
-                    <Btn backgroundColor="#fff"/>
+                    {/* <Btn backgroundColor="#fff"/> */}
                 </div>
             </div>
         </div>
