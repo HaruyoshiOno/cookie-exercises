@@ -24,6 +24,7 @@ export const Cart = () => {
         const savedCartItem = getCartItemFromCookie();
         console.log(savedCartItem);
         
+        
 
     // 合計金額
     let flg = false;
