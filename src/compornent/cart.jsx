@@ -23,7 +23,8 @@ export const Cart = () => {
 
         // カート情報を取得してコンソールに出力
         const savedCartItem = getCartItemFromCookie();
-        savedCartItem.innerHTML
+        console.log(savedCartItem);
+        // savedCartItem.innerHTML
         
         
 
