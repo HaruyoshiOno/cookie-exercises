@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 // import { Btn } from "./Btn";
 // import { Counter } from "./Counter";
 
@@ -29,16 +30,20 @@ export const ItemList = ({item}) => {
         // 商品情報
         const target = f.currentTarget.className;
 
-        // 商品情報と個数をオブジェクトにまとめる
-        
-        const cartItem = {
-            item: target,
-            quantity: quantity
-        };
+        // 個数と商品の配列
+       const item_qt = [];
+       const item_id = [];
 
-        // カート情報をCookieに保存する
-            document.cookie = "cartItem=" + JSON.stringify(cartItem);
-            console.log('cartItem',cartItem);
+        // 配列に値を追加
+        item_qt.push(quantity);
+        item_id.push(target);
+
+
+       // cookieを保存
+       document.cookie = item_qt;
+       document.cookie = item_id;
+       console.log('item_qt',item_qt);
+       console.log('item_id',item_id);
     };
 
     return (

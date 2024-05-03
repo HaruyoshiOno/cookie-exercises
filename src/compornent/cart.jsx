@@ -9,23 +9,29 @@ import { CartItem } from './CartItem';
 
 
 export const Cart = () => {
-        // Cookieからカート情報を取得する
-        const getCartItemFromCookie = () => {
-            const cookies = document.cookie.split(';');
-            for (let i = 0; i < cookies.length; i++) {
-                const cookie = cookies[i].trim();
-                if (cookie.indexOf("cartItem=") == 0) {
-                    return JSON.parse(cookie.substring("cartItem=".length, cookie.length));
-                }
-            }
-            return null;
-        }
 
-        // カート情報を取得してコンソールに出力
-        const savedCartItem = getCartItemFromCookie();
-        console.log(savedCartItem);
-        // savedCartItem.innerHTML
-        
+// Cookieからデータを取得する関数
+function getCookie(cookieName) {
+    const name = cookieName + "=";
+    const decodedCookie = decodeURIComponent(document.cookie);
+    const cookieArray = decodedCookie.split(';');
+    let cookieValue = null;
+    cookieArray.forEach(cookie => {
+        let trimmedCookie = cookie.trim(); // 余分な空白をトリム
+        if (trimmedCookie.indexOf(name) === 0) {
+            cookieValue = trimmedCookie.substring(name.length, trimmedCookie.length);
+        }
+    });
+    return cookieValue;
+}
+
+// 二つのCookieを取得する
+const item_qt = getCookie('item_qt');
+const item_id = getCookie('item_id');
+
+// 取得したCookieの値を表示
+console.log("item_qt:", item_qt);
+console.log("item_id:", item_id);
         
 
     // 合計金額
@@ -35,14 +41,10 @@ export const Cart = () => {
     const AllPrice = () => {
     if(!flg){
             const prices = document.querySelectorAll('.cart-total');
-            console.log('prices', prices);
             const totalPrice = document.querySelector('.cart-money');
             prices.forEach((price) => {
-                console.log('price', price);
                 total += parseFloat(price.textContent.replace(/\D/g, ''));
             });
-            console.log('total', total);
-            console.log("合計金額:", total.toFixed(2)); // コンソールに合計金額を出力
             totalPrice.textContent = total;
             flg = true;
         };
