@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { items } from './Items';
+import { CartItem } from './CartItem';
 // import { Counter } from './Counter';
 // import { Btn } from './Btn';
 
@@ -22,7 +23,7 @@ export const Cart = () => {
 
         // カート情報を取得してコンソールに出力
         const savedCartItem = getCartItemFromCookie();
-        console.log(savedCartItem);
+        savedCartItem.innerHTML
         
         
 
@@ -64,18 +65,7 @@ return (
                         <li className="cart-type">合計</li>
                     </ul>
                     {items.map((item) => (
-                    <div className="cart-item">
-                        <div className="cart-flavor">
-                            <p className="cart-img"><img src={item.src} alt="item.alt" /></p>
-                            <div className="cart-goods">
-                                <p className="cart-maker">{item.maker}</p>
-                                <p className="cart-name">{item.name}</p>
-                                <p className="cart-price">{item.price}<span>税込</span></p>
-                            </div>
-                        </div>
-                        {/* <Counter /> */}
-                        <p className="cart-total">{item.price}<span>税込</span></p>
-                    </div>
+                        <CartItem item={item} key={item.id}/>
                     ))}
                 </div>
                 <div className="cart-side">

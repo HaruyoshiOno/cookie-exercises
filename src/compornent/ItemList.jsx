@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 // import { Btn } from "./Btn";
 // import { Counter } from "./Counter";
-// a
+
 
 
 
@@ -55,7 +56,7 @@ export const ItemList = ({item}) => {
                     <button onClick={increase} className="itembox-increase">+</button>
                 </div>
                 <p className="btn">
-                    <a href="" onClick={(e) => cookieSave(e)} className={item.id}>カートに追加</a>
+                    <Link to="/cookie-exercises/Cart" onClick={(e) => cookieSave(e)} className={item.id}>カートに追加</Link>
                 </p>
             </div>
         </li>
