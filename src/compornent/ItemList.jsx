@@ -30,20 +30,14 @@ export const ItemList = ({item}) => {
         // 商品情報
         const target = f.currentTarget.className;
 
-        // 個数と商品の配列
-       const item_qt = [];
-       const item_id = [];
-
-        // 配列に値を追加
-        item_qt.push(quantity);
-        item_id.push(target);
-
+        const qt = "quantity=" + quantity;
+        const id = "target=" + target;
 
        // cookieを保存
-       document.cookie = item_qt;
-       document.cookie = item_id;
-       console.log('item_qt',item_qt);
-       console.log('item_id',item_id);
+       document.cookie = qt;
+       document.cookie = id;
+       console.log('qt',qt);
+       console.log('id',id);
     };
 
     return (

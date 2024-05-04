@@ -10,6 +10,11 @@ import { CartItem } from './CartItem';
 
 export const Cart = () => {
 
+
+        // 個数と商品の配列
+        let item_qt = [];
+        let item_id = [];
+
 // Cookieからデータを取得する関数
 function getCookie(cookieName) {
     const name = cookieName + "=";
@@ -25,13 +30,21 @@ function getCookie(cookieName) {
     return cookieValue;
 }
 
-// 二つのCookieを取得する
-const item_qt = getCookie('item_qt');
-const item_id = getCookie('item_id');
+const getCookieShoot = getCookie();
+console,log(getCookieShoot);
+
+
+        // 配列に値を追加
+        item_qt.push(qt);
+        item_id.push(id);
+
+// // 二つのCookieを取得する
+// const item_qt = getCookie('item_qt');
+// const item_id = getCookie('item_id');
 
 // 取得したCookieの値を表示
-console.log("item_qt:", item_qt);
-console.log("item_id:", item_id);
+console.log("qt:", qt);
+console.log("id:", id);
         
 
     // 合計金額
