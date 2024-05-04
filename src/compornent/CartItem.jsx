@@ -1,7 +1,8 @@
 import { useState } from "react";
+import { items } from "./Items";
 
 
-export const CartItem = ({item}) => {
+export const CartItem = ({unko}) => {
 
     const [count, setCount] = useState(0);
 
@@ -16,31 +17,14 @@ export const CartItem = ({item}) => {
     const increase = () => {
         setCount(prevCount => prevCount + 1);
     };
-
-
-    // const cookieSave = (f) => {
-    //     // 商品個数
-    //     const quantity = count;
-
-    //     // 商品情報
-    //     const target = f.currentTarget.className;
-
-    //     // 商品情報と個数をオブジェクトにまとめる
-        
-    //     const cartItem = {
-    //         item: target,
-    //         quantity: quantity
-    //     };
-    // }
-
         return (
             <div className="cart-item">
                 <div className="cart-flavor">
-                    <p className="cart-img"><img src={item.src} alt="item.alt" /></p>
+                    <p className="cart-img"><img src={items[unko].src} alt="item.alt" /></p>
                     <div className="cart-goods">
-                        <p className="cart-maker">{item.maker}</p>
-                        <p className="cart-name">{item.name}</p>
-                        <p className="cart-price">{item.price}<span>税込</span></p>
+                        <p className="cart-maker">{items[unko].maker}</p>
+                        <p className="cart-name">{items[unko].name}</p>
+                        <p className="cart-price">{items[unko].price}<span>税込</span></p>
                     </div>
                 </div>
                 <div className="itembox-quantity">
@@ -48,7 +32,7 @@ export const CartItem = ({item}) => {
                     <p className="itembox-number">{count}</p>
                     <button onClick={increase} className="itembox-increase">+</button>
                 </div>
-                <p className="cart-total">{item.price}<span>税込</span></p>
+                <p className="cart-total">{items[unko].price}<span>税込</span></p>
             </div>
         )
 }

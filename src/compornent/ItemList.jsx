@@ -36,8 +36,8 @@ export const ItemList = ({item}) => {
        // cookieを保存
        document.cookie = qt;
        document.cookie = id;
-       console.log('qt',qt);
-       console.log('id',id);
+       //console.log('qt',qt);
+       //console.log('id',id);
     };
 
     return (
