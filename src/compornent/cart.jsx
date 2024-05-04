@@ -50,7 +50,7 @@ export const Cart = () => {
     let item_id = [];
 
     //取得したcookieの数量、idを代入
-    item_qt.push(qts); //カート内アイテム数量リスト
+    item_qt.push(Number(qts)); //カート内アイテム数量リスト
     item_id.push(ids); //カート内アイテムidリスト
     /*--------------------------------------------*/
 
@@ -70,7 +70,8 @@ export const Cart = () => {
                             <li className="cart-type">合計</li>
                         </ul>
                         {item_id.map((id, index) => (
-                            <CartItem unko={id}/>
+                            // 数量も回したい
+                            <CartItem unko={id} qtes={item_qt[index]}/>
                         ))}
                     </div>
                     <div className="cart-side">

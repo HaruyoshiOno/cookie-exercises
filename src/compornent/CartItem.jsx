@@ -2,7 +2,7 @@ import { useState } from "react";
 import { items } from "./Items";
 
 
-export const CartItem = ({unko}) => {
+export const CartItem = ({unko, qtes}) => {
 
     const [count, setCount] = useState(0);
 
@@ -29,7 +29,7 @@ export const CartItem = ({unko}) => {
                 </div>
                 <div className="itembox-quantity">
                     <button onClick={decrease} className="itembox-decrease">-</button>
-                    <p className="itembox-number">{count}</p>
+                    <p className="itembox-number">{count + qtes}</p>
                     <button onClick={increase} className="itembox-increase">+</button>
                 </div>
                 <p className="cart-total">{items[unko].price}<span>税込</span></p>
