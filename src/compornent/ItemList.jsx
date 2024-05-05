@@ -38,6 +38,26 @@ export const ItemList = ({item}) => {
        document.cookie = id;
        //console.log('qt',qt);
        //console.log('id',id);
+
+
+    //カートcookie上書き阻止
+
+    // 追加したいcookie用に空配列を用意
+    const next_cookie = [];
+
+    // 複数保存するために、各cookieごとに処理するループ
+    next_cookie.forEach((newcookie)=> {
+        newcookie.push(read_cookie);
+    })
+
+    // // 値を保持しているかの判定
+    // if(read_cookie){
+    //     // 値を保持していたら、別変数で新しく保存
+    //     const next_cookie = document.cookie;
+    // } else {
+    //     // 値を保持していなかったらreturn
+    //     return
+    // }
     };
 
     return (

@@ -5,10 +5,13 @@ import { items } from "./Items";
 export const CartItem = ({unko, qtes}) => {
 
     const [count, setCount] = useState(0);
+    const newCount = count + qtes;
 
     const decrease = () => {
-        if (count <= 0) {
-            setCount(prevCount => prevCount = 0);
+        // カウントが0以上の時マイナスする、マイナス単位にしない
+        if (newCount <= 0) {
+            return
+            // setCount(prevCount => prevCount = 0);
         } else {
             setCount(prevCount => prevCount - 1);
         }
