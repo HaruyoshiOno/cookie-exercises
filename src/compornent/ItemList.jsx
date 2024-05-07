@@ -24,40 +24,51 @@ export const ItemList = ({item}) => {
 
 
     const cookieSave = (f) => {
-        // 商品個数
-        const quantity = count;
+            // 商品個数
+            const quantity = count;
 
-        // 商品情報
-        const target = f.currentTarget.className;
-
-        const qt = "quantity=" + quantity;
-        const id = "target=" + target;
-
-       // cookieを保存
-       document.cookie = qt;
-       document.cookie = id;
-       //console.log('qt',qt);
-       //console.log('id',id);
+            // 商品情報
+            const target = f.currentTarget.className;
 
 
-    //カートcookie上書き阻止
+            // 空配列で定義
+            let item_qt = []
+            let item_id = []
 
-    // 追加したいcookie用に空配列を用意
-    const next_cookie = [];
+            // coookieが入っているかの判定
+            if (document.cookie != "") {
 
-    // 複数保存するために、各cookieごとに処理するループ
-    next_cookie.forEach((newcookie)=> {
-        newcookie.push(read_cookie);
-    })
+                // cookieを取得
+                const getCookieItem = document.cookie;
+                
+                // 取得したcookieを分ける
+                const splitCookieItem = getCookieItem.split("; ");
 
-    // // 値を保持しているかの判定
-    // if(read_cookie){
-    //     // 値を保持していたら、別変数で新しく保存
-    //     const next_cookie = document.cookie;
-    // } else {
-    //     // 値を保持していなかったらreturn
-    //     return
-    // }
+                // 文字を消す
+                const qts = splitCookieItem[0].replace("quantity=", "");
+                const ids = splitCookieItem[1].replace("target=", "");
+
+                // 取得したcookieに代入
+                item_qt.push(qts); //カート内アイテム数量リスト
+                item_id.push(ids); //カート内アイテムidリスト
+
+                console.log(qts);
+                console.log(ids);
+            }
+
+            item_qt.push(quantity); //カート内アイテム数量リスト
+            item_id.push(target); //カート内アイテムidリスト
+
+            const qt = "quantity=" + item_qt;
+            const id = "target=" + item_id;
+
+
+            document.cookie = qt;
+            document.cookie = id;
+
+
+    
+
     };
 
     return (
