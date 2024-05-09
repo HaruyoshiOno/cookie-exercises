@@ -21,8 +21,10 @@ export const CartItem = ({unko, qtes}) => {
         setCount(prevCount => prevCount + 1);
     };
 
-    const getNewCount = newCount + Number(items[unko].price);
+    const getNewCount = newCount * parseFloat(items[unko].price.replace(/\D/g, ''));
     console.log('getNewCount',getNewCount);
+
+
     // const cartPrice = document.querySelectorAll('.cartPrice');
     // let priceArray = [];
     // let countArray = [];
@@ -51,7 +53,7 @@ export const CartItem = ({unko, qtes}) => {
                     <p className="itembox-number">{count + qtes}</p>
                     <button onClick={increase} className="itembox-increase">+</button>
                 </div>
-                <p className="cart-total">{items[unko].price}<span>税込</span></p>
+                <p className="cart-total">¥{getNewCount}<span>税込</span></p>
             </div>
         )
 }
