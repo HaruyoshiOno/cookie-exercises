@@ -20,6 +20,22 @@ export const CartItem = ({unko, qtes}) => {
     const increase = () => {
         setCount(prevCount => prevCount + 1);
     };
+
+    const getNewCount = newCount + Number(items[unko].price);
+    console.log('getNewCount',getNewCount);
+    // const cartPrice = document.querySelectorAll('.cartPrice');
+    // let priceArray = [];
+    // let countArray = [];
+
+    // cartPrice.forEach((priceLoop)=> {
+    //     const getPrice = priceLoop.items.price;
+    //     getPrice.push(priceArray);
+    // });
+
+    // count.push(countArray);
+
+    
+
         return (
             <div className="cart-item">
                 <div className="cart-flavor">
