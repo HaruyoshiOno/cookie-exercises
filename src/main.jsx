@@ -7,6 +7,8 @@ import "./assets/scss/style.scss"
 import { ItemBox } from './compornent/top';
 import { Header } from './compornent/Header';
 import Cart from './compornent/cart';
+import { Provider } from 'react-redux';
+import { store } from './compornent/store';
 
 
 
@@ -15,13 +17,15 @@ const root = createRoot(rootElement);
 
 root.render(
   <StrictMode>
-    <Router>
-      <Header />
-      <Routes>
-        <Route path='/cookie-exercises/' element={<ItemBox />} />
-        <Route path='/cookie-exercises/Cart' element={<Cart />} />
-      </Routes>
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <Header />
+        <Routes>
+          <Route path='/cookie-exercises/' element={<ItemBox />} />
+          <Route path='/cookie-exercises/Cart' element={<Cart />} />
+        </Routes>
+      </Router>
+    </Provider>
   </StrictMode>
 );
 

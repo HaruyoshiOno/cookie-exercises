@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import {  useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { decrement, increment } from "./counterSlice";
 // import { Btn } from "./Btn";
 // import { Counter } from "./Counter";
 
@@ -7,20 +9,22 @@ import { Link } from "react-router-dom";
 
 
 export const ItemList = ({item}) => {
+    const count = useSelector((state) => state.counter.count)
+    const dispatch = useDispatch();
 
-    const [count, setCount] = useState(0);
+    // const [count, setCount] = useState(0);
 
-    const decrease = () => {
-        if (count <= 0) {
-            setCount(prevCount => prevCount = 0);
-        } else {
-            setCount(prevCount => prevCount - 1);
-        }
-    };
+    // const decrease = () => {
+    //     if (count <= 0) {
+    //         setCount(prevCount => prevCount = 0);
+    //     } else {
+    //         setCount(prevCount => prevCount - 1);
+    //     }
+    // };
 
-    const increase = () => {
-        setCount(prevCount => prevCount + 1);
-    };
+    // const increase = () => {
+    //     setCount(prevCount => prevCount + 1);
+    // };
 
 
     const cookieSave = (f) => {
@@ -80,9 +84,9 @@ export const ItemList = ({item}) => {
             <p className="itembox-price">{item.price}<span>税込</span></p>
             <div className="itembox-container">
                 <div className="itembox-quantity">
-                    <button onClick={decrease} className="itembox-decrease">-</button>
+                    <button onClick={() => dispatch(decrement())} className="itembox-decrease">-</button>
                     <p className="itembox-number">{count}</p>
-                    <button onClick={increase} className="itembox-increase">+</button>
+                    <button onClick={() => dispatch(increment())} className="itembox-increase">+</button>
                 </div>
                 <p className="btn">
                     <Link to="/cookie-exercises/Cart" onClick={(e) => cookieSave(e)} className={item.id}>カートに追加</Link>
