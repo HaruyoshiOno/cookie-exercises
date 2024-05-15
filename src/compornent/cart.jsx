@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { items } from './Items';
 import { CartItem } from './CartItem';
+import { useDispatch, useSelector } from 'react-redux';
+import AllPrice from './counterSlice';
 // import { Counter } from './Counter';
 // import { Btn } from './Btn';
 
@@ -12,25 +14,37 @@ export const Cart = () => {
 
     //合計金額算出用
     /*--------------------------------------------*/
-        // 合計金額
-        let flg = false;
-        let total = 0
+
+    const total = useSelector((state) => state.counter.total)
+    const dispach = useDispatch();
+    const AllPriceDispach = () => {
+        dispach(AllPrice());
+    }
     
-        const AllPrice = () => {
-        if(!flg){
-                const prices = document.querySelectorAll('.cart-total');
-                const totalPrice = document.querySelector('.cart-money');
-                prices.forEach((price) => {
-                    total += parseFloat(price.textContent.replace(/\D/g, ''));
-                });
-                totalPrice.textContent = total;
-                flg = true;
-            };
-        }
-    
-        useEffect (() => {
-            AllPrice()
+
+    useEffect (() => {
+        AllPriceDispach()
         },[]);
+
+        // 合計金額
+        // let flg = false;
+        // let total = 0
+    
+        // const AllPrice = () => {
+        // if(!flg){
+        //         const prices = document.querySelectorAll('.cart-total');
+        //         const totalPrice = document.querySelector('.cart-money');
+        //         prices.forEach((price) => {
+        //             total += parseFloat(price.textContent.replace(/\D/g, ''));
+        //         });
+        //         totalPrice.textContent = total;
+        //         flg = true;
+        //     };
+        // }
+    
+        // useEffect (() => {
+        //     AllPrice()
+        // },[]);
     /*--------------------------------------------*/
 
     //カートcookie取得用

@@ -24,18 +24,6 @@ export const CartItem = ({unko, qtes}) => {
     const getNewCount = newCount * parseFloat(items[unko].price.replace(/\D/g, ''));
     console.log('getNewCount',getNewCount);
 
-
-    // const cartPrice = document.querySelectorAll('.cartPrice');
-    // let priceArray = [];
-    // let countArray = [];
-
-    // cartPrice.forEach((priceLoop)=> {
-    //     const getPrice = priceLoop.items.price;
-    //     getPrice.push(priceArray);
-    // });
-
-    // count.push(countArray);
-
     
 
         return (

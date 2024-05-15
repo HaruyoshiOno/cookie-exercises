@@ -2,24 +2,36 @@ import { createSlice } from "@reduxjs/toolkit";
 
 
 export const counterSlice = createSlice({
-    name: "counter",
+    name: "allprice",
         initialState: {
-            count: 0,
+            total: 0,
         },
     reducers: {
-        increment: (state) => {
-            state.count += 1;
-        },
-        decrement: (state) => {
-            if (count <= 0){
-                state.count = 0;
-            } else {
-                state.count -= 1;
-            }
-        },
+        AllPrice: (state) => {
+            let flg = false;
+            if(!flg){
+                const prices = document.querySelectorAll('.cart-total');
+                const totalPrice = document.querySelector('.cart-money');
+                prices.forEach((price) => {
+                    state.total += parseFloat(price.textContent.replace(/\D/g, ''));
+                });
+                totalPrice.textContent = state.total;
+                flg = true;
+            };
+        }
+        // increment: (state) => {
+        //     state.count += 1;
+        // },
+        // decrement: (state) => {
+        //     if (count <= 0){
+        //         state.count = 0;
+        //     } else {
+        //         state.count -= 1;
+        //     }
+        // },
     }
 })
 
-export const {increment, decrement} = counterSlice.actions;
+export const { AllPrice } = counterSlice.actions;
 
 export default counterSlice.reducer;
