@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
-import { items } from './Items';
+import React, { useEffect, useState } from 'react';
+// import { items } from './Items';
 import { CartItem } from './CartItem';
-import { useDispatch, useSelector } from 'react-redux';
-import { AllPrice } from './counterSlice';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { AllPrice } from './counterSlice';
 // import { Counter } from './Counter';
 // import { Btn } from './Btn';
 
@@ -15,12 +15,12 @@ export const Cart = () => {
     //合計金額算出用
     /*--------------------------------------------*/
 
-    const total = useSelector((state) => state.counter.total)
-    const dispach = useDispatch(); 
+    // const total = useSelector((state) => state.counter.total)
+    // const dispach = useDispatch(); 
 
-    useEffect (() => {
-        dispach(AllPrice());
-        },[]);
+    // useEffect (() => {
+    //     dispach(AllPrice());
+    //     },[]);
 
         // 合計金額
         // let flg = false;
@@ -70,12 +70,12 @@ export const Cart = () => {
     /*--------------------------------------------*/
 
 
-    //カートcookie上書き阻止
-    /*--------------------------------------------*/
-    // 
-    
+    const [data, setData] = useState(''); //1.親に空のstateを作る
 
-    /*--------------------------------------------*/
+    const childToParent = (子の合計金額) => {//2.子から受け取った合計金額を上の空のstateに入れる関数を作る
+        setData(子の合計金額);
+    }
+
 
 
     //カート表示本体
@@ -95,13 +95,14 @@ export const Cart = () => {
                         </ul>
                         {item_id.map((id, index) => (
                             // 数量も回したい
-                            <CartItem key={id} unko={id} qtes={item_qt_number[index]}/>
+                            <CartItem key={id} unko={id} qtes={item_qt_number[index]} childToParent={childToParent}/> //3.2で作った格納用関数を子コンポーネントに渡す
+
                         ))}
                     </div>
                     <div className="cart-side">
                         <div className="cart-plus">
                             <p className="cart-sum">合計</p>
-                            <p className="cart-money">{total}<span>税込</span></p>
+                            <p className="cart-money">{data}<span>税込</span></p>
                         </div>
                         {/* <Btn /> */}
                         {/* <Btn backgroundColor="#fff"/> */}

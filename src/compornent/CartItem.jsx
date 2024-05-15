@@ -2,7 +2,7 @@ import { useState } from "react";
 import { items } from "./Items";
 
 
-export const CartItem = ({unko, qtes}) => {
+export const CartItem = ({unko, qtes, childToParent}) => {
 
     const [count, setCount] = useState(0);
     const newCount = count + qtes;
@@ -14,11 +14,13 @@ export const CartItem = ({unko, qtes}) => {
             // setCount(prevCount => prevCount = 0);
         } else {
             setCount(prevCount => prevCount - 1);
+            childToParent(getNewCount); //4.親から受け取った関数に合計金額を入れる
         }
     };
 
     const increase = () => {
         setCount(prevCount => prevCount + 1);
+        childToParent(getNewCount); //4.親から受け取った関数に合計金額を入れる
     };
 
     const getNewCount = newCount * parseFloat(items[unko].price.replace(/\D/g, ''));
