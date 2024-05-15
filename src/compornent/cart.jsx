@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { items } from './Items';
 import { CartItem } from './CartItem';
 import { useDispatch, useSelector } from 'react-redux';
-import AllPrice from './counterSlice';
+import { AllPrice } from './counterSlice';
 // import { Counter } from './Counter';
 // import { Btn } from './Btn';
 
@@ -16,12 +16,7 @@ export const Cart = () => {
     /*--------------------------------------------*/
 
     const total = useSelector((state) => state.counter.total)
-    const dispach = useDispatch();
-    // const AllPriceDispach = () => {
-    //     dispach(AllPrice());
-    // }
-    
-    
+    const dispach = useDispatch(); 
 
     useEffect (() => {
         dispach(AllPrice());
@@ -98,9 +93,9 @@ export const Cart = () => {
                             <li className="cart-type">数量</li>
                             <li className="cart-type">合計</li>
                         </ul>
-                        {item_id.map((idz, indexes) => (
+                        {item_id.map((id, index) => (
                             // 数量も回したい
-                            <CartItem unko={idz} qtes={item_qt_number[indexes]}/>
+                            <CartItem key={id} unko={id} qtes={item_qt_number[index]}/>
                         ))}
                     </div>
                     <div className="cart-side">
