@@ -17,13 +17,14 @@ export const Cart = () => {
 
     const total = useSelector((state) => state.counter.total)
     const dispach = useDispatch();
-    const AllPriceDispach = () => {
-        dispach(AllPrice());
-    }
+    // const AllPriceDispach = () => {
+    //     dispach(AllPrice());
+    // }
+    
     
 
     useEffect (() => {
-        AllPriceDispach()
+        dispach(AllPrice());
         },[]);
 
         // 合計金額
@@ -97,9 +98,9 @@ export const Cart = () => {
                             <li className="cart-type">数量</li>
                             <li className="cart-type">合計</li>
                         </ul>
-                        {item_id.map((id, index) => (
+                        {item_id.map((idz, indexes) => (
                             // 数量も回したい
-                            <CartItem unko={id} qtes={item_qt_number[index]}/>
+                            <CartItem unko={idz} qtes={item_qt_number[indexes]}/>
                         ))}
                     </div>
                     <div className="cart-side">
