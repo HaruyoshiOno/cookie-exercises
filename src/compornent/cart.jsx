@@ -12,39 +12,18 @@ import { CartItem } from './CartItem';
 
 export const Cart = () => {
 
-    //合計金額算出用
-    /*--------------------------------------------*/
+    const [data, setData] = useState(0); //1.親に空のstateを作る
 
-    // const total = useSelector((state) => state.counter.total)
-    // const dispach = useDispatch(); 
+    const childToParent = (子の合計金額) => {//2.子から受け取った合計金額を上の空のstateに入れる関数を作る
+        setData(子の合計金額);
+    }
 
-    // useEffect (() => {
-    //     dispach(AllPrice());
-    //     },[]);
 
-        // 合計金額
-        // let flg = false;
-        // let total = 0
-    
-        // const AllPrice = () => {
-        // if(!flg){
-        //         const prices = document.querySelectorAll('.cart-total');
-        //         const totalPrice = document.querySelector('.cart-money');
-        //         prices.forEach((price) => {
-        //             total += parseFloat(price.textContent.replace(/\D/g, ''));
-        //         });
-        //         totalPrice.textContent = total;
-        //         flg = true;
-        //     };
-        // }
-    
-        // useEffect (() => {
-        //     AllPrice()
-        // },[]);
-    /*--------------------------------------------*/
 
     //カートcookie取得用
     /*--------------------------------------------*/
+
+
     //保存されているcookieを取得する
     const read_cookie = document.cookie;
 
@@ -67,14 +46,12 @@ export const Cart = () => {
     const item_qt_number = item_qt.map((str) => {
         return parseInt(str, 10);
     });
+
+
     /*--------------------------------------------*/
 
 
-    const [data, setData] = useState(''); //1.親に空のstateを作る
 
-    const childToParent = (子の合計金額) => {//2.子から受け取った合計金額を上の空のstateに入れる関数を作る
-        setData(子の合計金額);
-    }
 
 
 

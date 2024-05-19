@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { items } from "./Items";
 
 
@@ -6,6 +6,8 @@ export const CartItem = ({unko, qtes, childToParent}) => {
 
     const [count, setCount] = useState(0);
     const newCount = count + qtes;
+
+    const getNewCount = newCount * parseFloat(items[unko].price.replace(/\D/g, ''));
 
     const decrease = () => {
         // カウントが0以上の時マイナスする、マイナス単位にしない
@@ -23,8 +25,12 @@ export const CartItem = ({unko, qtes, childToParent}) => {
         childToParent(getNewCount); //4.親から受け取った関数に合計金額を入れる
     };
 
-    const getNewCount = newCount * parseFloat(items[unko].price.replace(/\D/g, ''));
-    console.log('getNewCount',getNewCount);
+
+    useEffect(() => {
+        childToParent(getNewCount);
+      },[count]) 
+
+
 
     
 
