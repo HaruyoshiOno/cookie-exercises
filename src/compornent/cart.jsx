@@ -13,10 +13,13 @@ import { CartItem } from './CartItem';
 export const Cart = () => {
 
     const [data, setData] = useState(0); //1.親に空のstateを作る
+    const [total, setTotal] = useState(0); 
 
     const childToParent = (子の合計金額) => {//2.子から受け取った合計金額を上の空のstateに入れる関数を作る
         setData(子の合計金額);
     }
+
+    
 
 
 
@@ -50,7 +53,28 @@ export const Cart = () => {
 
     /*--------------------------------------------*/
 
+            // 合計金額
 
+    
+        useEffect (() => {
+
+            let flg = false;            
+
+            const AllPrice = () => {
+            if(!flg){
+                    const prices = document.querySelectorAll('.cart-total');
+                    const totalPrice = document.querySelector('.cart-money');
+                    let newTotal = 0; // 新しい合計金額の変数を追加
+                    prices.forEach((price) => {
+                        newTotal += parseFloat(price.textContent.replace(/\D/g, ''));
+                    });
+                    totalPrice.textContent = newTotal;
+                    setTotal(newTotal);
+                    flg = true;
+                };
+            }
+            AllPrice()
+        },[data]);
 
 
 
@@ -79,7 +103,7 @@ export const Cart = () => {
                     <div className="cart-side">
                         <div className="cart-plus">
                             <p className="cart-sum">合計</p>
-                            <p className="cart-money">{data}<span>税込</span></p>
+                            <p className="cart-money">{total}<span>税込</span></p>
                         </div>
                         {/* <Btn /> */}
                         {/* <Btn backgroundColor="#fff"/> */}

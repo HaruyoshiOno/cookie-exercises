@@ -25,6 +25,8 @@ export const CartItem = ({unko, qtes, childToParent}) => {
         childToParent(getNewCount); //4.親から受け取った関数に合計金額を入れる
     };
 
+    
+
 
     useEffect(() => {
         childToParent(getNewCount);
