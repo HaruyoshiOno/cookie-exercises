@@ -33,9 +33,17 @@ export const CartItem = ({unko, qtes, childToParent}) => {
       },[count]) 
 
 
+      const loadCookieSave = () => {
+        document.cookie = newCount;
+      }
+
+    //   useEffect(() => {
+    //     document.cookie = newCount;
+    //     console.log("newCount",newCount);
+    //   },[]) 
 
     
-
+;
         return (
             <div className="cart-item">
                 <div className="cart-flavor">
