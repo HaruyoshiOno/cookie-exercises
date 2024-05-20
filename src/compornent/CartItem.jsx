@@ -1,10 +1,16 @@
 import { useEffect, useState } from "react";
 import { items } from "./Items";
+import Cookies from 'js-cookie';
 
 
 export const CartItem = ({unko, qtes, childToParent}) => {
 
-    const [count, setCount] = useState(0);
+    const [count, setCount] = useState(() => {
+        const savedCount = Cookies.get('count');
+        return savedCount !== undefined ? parseInt(savedCount, 10) : 0;
+    });
+
+
     const newCount = count + qtes;
 
     const getNewCount = newCount * parseFloat(items[unko].price.replace(/\D/g, ''));
@@ -29,13 +35,21 @@ export const CartItem = ({unko, qtes, childToParent}) => {
 
 
     useEffect(() => {
+        Cookies.set('count', count, { expires: 7 });
         childToParent(getNewCount);
       },[count]) 
 
 
-      const loadCookieSave = () => {
-        document.cookie = newCount;
-      }
+    // useEffect(() => {
+    //     const savedCount = Cookies.get('myCount');
+    //     if(savedCount) {
+    //         setCount(savedCount);
+    //     }
+    // },[]);
+
+    // useEffect(() => {
+    //     Cookies.set('myCount', count, { expires: 7 }); // 7日間有効なクッキー
+    // },[count]);
 
     //   useEffect(() => {
     //     document.cookie = newCount;
