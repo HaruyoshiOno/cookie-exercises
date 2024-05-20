@@ -6,14 +6,14 @@ import Cookies from 'js-cookie';
 export const CartItem = ({unko, qtes, childToParent}) => {
 
     const [count, setCount] = useState(() => {
-        const savedCount = Cookies.get('count');
+        const savedCount = Cookies.get(`count-${unko}`);
         return savedCount !== undefined ? parseInt(savedCount, 10) : 0;
     });
 
 
     const newCount = count + qtes;
 
-    const getNewCount = newCount * parseFloat(items[unko].price.replace(/\D/g, ''));
+    const getNewCount = newCount * parseFloat(items[unko].price.replace(/[^0-9.]/g, ''));
 
     const decrease = () => {
         // カウントが0以上の時マイナスする、マイナス単位にしない
@@ -35,9 +35,9 @@ export const CartItem = ({unko, qtes, childToParent}) => {
 
 
     useEffect(() => {
-        Cookies.set('count', count, { expires: 7 });
+        Cookies.set(`count-${unko}`, count, { expires: 7 });
         childToParent(getNewCount);
-      },[count]) 
+      },[count, unko, childToParent]) 
 
 
     // useEffect(() => {
