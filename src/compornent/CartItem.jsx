@@ -39,24 +39,6 @@ export const CartItem = ({unko, qtes, childToParent}) => {
         childToParent(getNewCount);
       },[count, unko, childToParent]) 
 
-
-    // useEffect(() => {
-    //     const savedCount = Cookies.get('myCount');
-    //     if(savedCount) {
-    //         setCount(savedCount);
-    //     }
-    // },[]);
-
-    // useEffect(() => {
-    //     Cookies.set('myCount', count, { expires: 7 }); // 7日間有効なクッキー
-    // },[count]);
-
-    //   useEffect(() => {
-    //     document.cookie = newCount;
-    //     console.log("newCount",newCount);
-    //   },[]) 
-
-    
 ;
         return (
             <div className="cart-item">

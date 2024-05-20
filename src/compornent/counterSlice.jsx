@@ -19,16 +19,6 @@ export const counterSlice = createSlice({
                 flg = true;
             };
         }
-        // increment: (state) => {
-        //     state.count += 1;
-        // },
-        // decrement: (state) => {
-        //     if (count <= 0){
-        //         state.count = 0;
-        //     } else {
-        //         state.count -= 1;
-        //     }
-        // },
     }
 })
 
